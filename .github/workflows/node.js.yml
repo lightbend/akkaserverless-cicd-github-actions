@@ -13,6 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    
+    env:
+      AKKASLS_TOKEN: cst1.47b66c6500c689cb9790a3bdbe5c0454bf9db7a649345a9e818e36b9ad416957
 
     strategy:
       matrix:
