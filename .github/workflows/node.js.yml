@@ -34,3 +34,4 @@ jobs:
     - run: wget https://downloads.akkaserverless.com/stable/akkasls_linux_amd64.tar.gz
     - run: tar -xzf akkasls_linux_amd64.tar.gz
     - run: sudo mv akkasls /usr/local/bin
+    - run: akkasls config set refresh-token $AKKASLS_TOKEN
