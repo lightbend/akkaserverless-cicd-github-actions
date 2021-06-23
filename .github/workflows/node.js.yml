@@ -29,3 +29,4 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     - run: wget https://downloads.akkaserverless.com/stable/akkasls_linux_amd64.tar.gz
+    - run: tar -xzf akkasls_linux_amd64.tar.gz
