@@ -16,6 +16,7 @@ jobs:
     
     env:
       AKKASLS_TOKEN: cst1.47b66c6500c689cb9790a3bdbe5c0454bf9db7a649345a9e818e36b9ad416957
+      AKKASLS_AKKASLS_PROJECT_ID: 2a28e010-1260-4808-b8bc-aaaa2e3fb68d
 
     strategy:
       matrix:
@@ -34,4 +35,5 @@ jobs:
     - run: wget https://downloads.akkaserverless.com/stable/akkasls_linux_amd64.tar.gz
     - run: tar -xzf akkasls_linux_amd64.tar.gz
     - run: sudo mv akkasls /usr/local/bin
-    - run: akkasls config set refresh-token $AKKASLS_TOKEN
+    - run: akkasls config set refresh-token $AKKASLS_TOKEN --host api.akkaserverless.io:443
+    - run: akkasls config set project $AKKASLS_PROJECT_ID --host api.akkaserverless.io:443
