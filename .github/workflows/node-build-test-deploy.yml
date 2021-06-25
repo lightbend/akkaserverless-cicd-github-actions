@@ -25,6 +25,9 @@ jobs:
   deploy:
     needs: [test]
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
 
     steps:
       - run: wget https://downloads.akkaserverless.com/stable/akkasls_linux_amd64.tar.gz
@@ -32,6 +35,11 @@ jobs:
       - run: sudo mv akkasls /usr/local/bin
       - run: akkasls config set refresh-token ${{ secrets.AKKASLS_TOKEN }}
       - run: akkasls config set project ${{ secrets.AKKASLS_PROJECT_ID }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: docker build . -t beritou/person:0.0.1
       - name: Docker Login
         uses: docker/login-action@v1.10.0
