@@ -8,6 +8,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      PERSON_VERSION: $(node -p "require('./package').version")
     strategy:
       matrix:
         node-version: [14.x]
@@ -21,13 +23,12 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
-      - run: docker build . -t beritou/person:0.0.1
+      - run: docker build . -t beritou/person:{{ env.PERSON_VERSION }}
       - name: Docker Login
         uses: docker/login-action@v1.10.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/person:$PERSON_VERSION
+      - run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/person:{{ env.PERSON_VERSION }}
         env:
           CI: true
-          PERSON_VERSION: $(node -p "require('./package').version")
