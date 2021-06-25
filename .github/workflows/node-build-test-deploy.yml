@@ -33,3 +33,8 @@ jobs:
       - run: akkasls config set refresh-token ${{ secrets.AKKASLS_TOKEN }}
       - run: akkasls config set project ${{ secrets.AKKASLS_PROJECT_ID }}
       - run: docker build . -t beritou/person:0.0.1
+      - name: Docker Login
+        uses: docker/login-action@v1.10.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
