@@ -27,5 +27,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/person:0.0.1
         env:
           CI: true
