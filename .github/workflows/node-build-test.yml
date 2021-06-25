@@ -27,6 +27,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/person:0.0.1
+      - run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/person:$PERSON_VERSION
         env:
           CI: true
+          PERSON_VERSION: $(node -p "require('./package').version")
