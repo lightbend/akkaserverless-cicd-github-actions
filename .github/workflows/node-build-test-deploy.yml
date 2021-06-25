@@ -32,4 +32,4 @@ jobs:
       - run: sudo mv akkasls /usr/local/bin
       - run: akkasls config set refresh-token ${{ secrets.AKKASLS_TOKEN }}
       - run: akkasls config set project ${{ secrets.AKKASLS_PROJECT_ID }}
-      #- run: docker build -t person .
+      - run: docker build . -t beritou/person:0.0.1
