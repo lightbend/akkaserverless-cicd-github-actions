@@ -29,8 +29,10 @@ const entity = new ValueEntity(
   }
 );
 
+//demo
 entity.setInitial(entityId => ({}));
 
+//demo
 entity.setCommandHandlers({
   Increase(command, state, ctx) {
     return ctx.fail("The command handler for `Increase` is not implemented, yet");
