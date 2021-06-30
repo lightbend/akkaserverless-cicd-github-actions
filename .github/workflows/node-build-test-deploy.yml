@@ -44,9 +44,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}
-      - run: wget https://downloads.akkaserverless.com/stable/akkasls_linux_amd64.tar.gz
-      - run: tar -xzf akkasls_linux_amd64.tar.gz
-      - run: sudo mv akkasls /usr/local/bin
-      - run: akkasls config set refresh-token ${{ secrets.AKKASLS_TOKEN }}
-      - run: akkasls config set project ${{ secrets.AKKASLS_PROJECT_ID }}
-      - run: akkasls service deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}
+      - name: Deploy Service
+        uses: retgits/akkasls-action@v2
+        with:
+          cmd: service deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}
+        env:
+          token: ${{ secrets.AKKASLS_TOKEN }}
+          project: ${{ secrets.AKKASLS_PROJECT_ID }}
