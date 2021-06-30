@@ -51,7 +51,7 @@ jobs:
       - name: Hardcoded Deploy
         uses: retgits/akkasls-action@v2
         with:
-          cmd: "services deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:0.0.9"
+          cmd: "services deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:0.0.10"
         env:
           token: ${{ secrets.AKKASLS_TOKEN }}
           project: ${{ secrets.AKKASLS_PROJECT_ID }}
