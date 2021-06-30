@@ -44,6 +44,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}
+      - run: echo "echoing"
+      - run: echo "service deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}"
       - name: Deploy Service
         uses: retgits/akkasls-action@v2
         with:
