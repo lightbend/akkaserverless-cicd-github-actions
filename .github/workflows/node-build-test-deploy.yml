@@ -47,7 +47,7 @@ jobs:
       - name: Deploy Service
         uses: retgits/akkasls-action@v2
         with:
-          cmd: service deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}
+          cmd: "service deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}"
         env:
           token: ${{ secrets.AKKASLS_TOKEN }}
           project: ${{ secrets.AKKASLS_PROJECT_ID }}
