@@ -44,19 +44,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}
-      - run: wget https://downloads.akkaserverless.com/stable/akkasls_linux_amd64.tar.gz
-      - run: tar -xzf akkasls_linux_amd64.tar.gz
-      - run: sudo mv akkasls /usr/local/bin
-      - run: akkasls config set refresh-token ${{ secrets.AKKASLS_TOKEN }}
-      - id: release
-        uses: rymndhng/release-on-push-action@master
-        with:
-          bump_version_scheme: minor
-          tag_prefix: v
-      - name: Check Output Parameters
-        run: |
-          echo "Got tag name ${{ steps.release.outputs.tag_name }}"
-          echo "Got release version ${{ steps.release.outputs.version }}"
+      - name: Get Version
+        uses: battila7/get-version-action@v2.2.1
+      - run: echo ${{ steps.get_version.outputs.version }}
+      - run: echo ${{ steps.get_version.outputs.version-without-v }}
       - name: Hardcoded Deploy
         uses: retgits/akkasls-action@v2
         with:
