@@ -50,6 +50,8 @@ jobs:
       - run: akkasls config set refresh-token ${{ secrets.AKKASLS_TOKEN }}
       - name: Get the tag name
         run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      - name: Echo the tag name
+        run: echo ${{ env.TAG }}
       - name: Hardcoded Deploy
         uses: retgits/akkasls-action@v2
         with:
@@ -57,5 +59,3 @@ jobs:
         env:
           token: ${{ secrets.AKKASLS_TOKEN }}
           project: ${{ secrets.AKKASLS_PROJECT_ID }}
-      # - run: akkasls config set project ${{ secrets.AKKASLS_PROJECT_ID }}
-      # - run: akkasls service deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}

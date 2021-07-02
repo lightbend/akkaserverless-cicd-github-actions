@@ -1,6 +1,6 @@
 {
   "name": "person",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "type": "module",
   "engines": {
     "node": ">=14.0.0",
