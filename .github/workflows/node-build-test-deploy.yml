@@ -49,7 +49,7 @@ jobs:
       - run: sudo mv akkasls /usr/local/bin
       - run: akkasls config set refresh-token ${{ secrets.AKKASLS_TOKEN }}
       - id: release
-        uses: rymndhng/release-on-push-action@v0.0.20
+        uses: rymndhng/release-on-push-action@0.0.20
         with:
           bump_version_scheme: minor
           tag_prefix: v
