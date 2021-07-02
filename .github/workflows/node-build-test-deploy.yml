@@ -37,7 +37,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: echo $GITHUB_REF
+      - run: echo ${GITHUB_REF/refs\/tags\//}
       - run: docker build . -t beritou/person:${{ env.PERSON_VERSION }}
       - name: Docker Login
         uses: docker/login-action@v1.10.0
