@@ -26,7 +26,7 @@ jobs:
     needs: [test]
     runs-on: ubuntu-latest
     env:
-      PERSON_VERSION: $(node -p "require('./package').version")
+      PERSON_VERSION: ${GITHUB_REF/refs\/tags\//}
     strategy:
       matrix:
         node-version: [14.x]
@@ -48,7 +48,7 @@ jobs:
       - name: akkasls Deploy
         uses: retgits/akkasls-action@v2
         with:
-          cmd: "services deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${GITHUB_REF/refs\/tags\//}"
+          cmd: "services deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}"
         env:
           token: ${{ secrets.AKKASLS_TOKEN }}
           project: ${{ secrets.AKKASLS_PROJECT_ID }}
