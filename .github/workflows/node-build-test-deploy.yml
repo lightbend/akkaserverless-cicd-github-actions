@@ -48,6 +48,8 @@ jobs:
       - run: tar -xzf akkasls_linux_amd64.tar.gz
       - run: sudo mv akkasls /usr/local/bin
       - run: akkasls config set refresh-token ${{ secrets.AKKASLS_TOKEN }}
+      - name: Get the tag name
+        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - name: Hardcoded Deploy
         uses: retgits/akkasls-action@v2
         with:
