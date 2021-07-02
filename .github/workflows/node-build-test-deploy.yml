@@ -48,10 +48,15 @@ jobs:
       - run: tar -xzf akkasls_linux_amd64.tar.gz
       - run: sudo mv akkasls /usr/local/bin
       - run: akkasls config set refresh-token ${{ secrets.AKKASLS_TOKEN }}
-      - name: Get the tag name
-        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
-      - name: Echo the tag name
-        run: echo ${{ env.TAG }}
+      - id: release
+        uses: rymndhng/release-on-push-action@v0.0.20
+        with:
+          bump_version_scheme: minor
+          tag_prefix: v
+      - name: Check Output Parameters
+        run: |
+          echo "Got tag name ${{ steps.release.outputs.tag_name }}"
+          echo "Got release version ${{ steps.release.outputs.version }}"
       - name: Hardcoded Deploy
         uses: retgits/akkasls-action@v2
         with:
