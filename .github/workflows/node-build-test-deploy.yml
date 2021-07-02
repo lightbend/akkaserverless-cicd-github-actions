@@ -37,10 +37,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Get Version
-        uses: battila7/get-version-action@v2.2.1
-      - run: echo ${{ steps.get_version.outputs.version }}
-      - run: echo ${{ steps.get_version.outputs.version-without-v }}
+      - run: echo $GITHUB_REF
       - run: docker build . -t beritou/person:${{ env.PERSON_VERSION }}
       - name: Docker Login
         uses: docker/login-action@v1.10.0
@@ -51,7 +48,7 @@ jobs:
       - name: akkasls Deploy
         uses: retgits/akkasls-action@v2
         with:
-          cmd: "services deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ steps.get_version.outputs.version }}"
+          cmd: "services deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:0.0.10"
         env:
           token: ${{ secrets.AKKASLS_TOKEN }}
           project: ${{ secrets.AKKASLS_PROJECT_ID }}
