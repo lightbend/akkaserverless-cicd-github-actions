@@ -48,7 +48,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}
       - name: akkasls Deploy
-        uses: retgits/akkasls-action@v2
+        uses: lightbend/akkasls-action@v2
         with:
           cmd: "services deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}"
         env:
