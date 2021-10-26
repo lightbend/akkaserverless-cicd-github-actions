@@ -20,3 +20,5 @@ Fully parmaterized with:
 - Docker Hub token
 - Akka Serverless token
 - Akka Serverless project ID
+
+For more information: https://developer.lightbend.com/docs/akka-serverless/projects/integrate-cicd-github-actions.html
