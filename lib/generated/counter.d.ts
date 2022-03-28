@@ -1,7 +1,7 @@
 import {
   TypedValueEntity,
   ValueEntityCommandContext
-} from "../akkaserverless";
+} from "../kalix";
 import proto from "./proto";
 
 export type State = proto.com.example.domain.ICounterState;

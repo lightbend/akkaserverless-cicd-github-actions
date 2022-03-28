@@ -1,5 +1,5 @@
 /**
- * Mocks the behaviour of a single Akka Serverless Event-sourced entity.
+ * Mocks the behaviour of a single Kalix Event-sourced entity.
  *
  * Handles any commands and events, internally tracking the state and maintaining an event log.
  *
@@ -63,7 +63,7 @@ export class MockEventSourcedEntity {
 }
 
 /**
- * Mocks the behaviour of a single Akka Serverless Value entity.
+ * Mocks the behaviour of a single Kalix Value entity.
  *
  * Handles any commands, internally maintaining the state.
  *
@@ -116,8 +116,8 @@ export class MockValueEntity {
 }
 
 /**
- * Generic mock CommandContext for any Akka Serverless entity
- * @type { import("../lib/akkaserverless").CommandContext }
+ * Generic mock CommandContext for any Kalix entity
+ * @type { import("../lib/kalix").CommandContext }
  */
 export class MockCommandContext {
   effects = [];
@@ -148,13 +148,13 @@ export class MockCommandContext {
 }
 
 /**
- * Mocks the behaviour of the command context object within Akka Serverless.
+ * Mocks the behaviour of the command context object within Kalix.
  *
  * By default, calls to [AkkaServerlessTestKitEntity~handleCommand] will
  * construct their own instance of this class, however for making assertions on
  * forwarding or emmitted effects you may provide your own.
  *
- * @type { import("../lib/akkaserverless").EventSourcedCommandContext<unknown> }
+ * @type { import("../lib/kalix").EventSourcedCommandContext<unknown> }
  */
 export class MockEventSourcedCommandContext extends MockCommandContext {
   events = [];
@@ -165,13 +165,13 @@ export class MockEventSourcedCommandContext extends MockCommandContext {
 }
 
 /**
- * Mocks the behaviour of the command context object within Akka Serverless.
+ * Mocks the behaviour of the command context object within Kalix.
  *
  * By default, calls to [AkkaServerlessTestKitEntity~handleCommand] will
  * construct their own instance of this class, however for making assertions on
  * forwarding or emmitted effects you may provide your own.
  *
- * @type { import("../lib/akkaserverless").ValueEntityCommandContext<unknown> }
+ * @type { import("../lib/kalix").ValueEntityCommandContext<unknown> }
  */
 export class MockValueEntityCommandContext extends MockCommandContext {
   updatedState = undefined;

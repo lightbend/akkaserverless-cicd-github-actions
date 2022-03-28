@@ -47,10 +47,10 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}
-      - name: akkasls Deploy
-        uses: lightbend/akkasls-action@v2
+      - name: Kalix Deploy
+        uses: lightbend/kalix-action@v2
         with:
           cmd: "services deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}"
         env:
-          token: ${{ secrets.AKKASLS_TOKEN }}
-          project: ${{ secrets.AKKASLS_PROJECT_ID }}
+          token: ${{ secrets.KALIX_TOKEN }}
+          project: ${{ secrets.KALIX_PROJECT_ID }}

@@ -1,4 +1,4 @@
-# CI/CD with Akka Serverless
+# CI/CD with Kalix
 
 When pull request created:
 
@@ -11,14 +11,14 @@ When GitHub release published:
 - authenticate to Docker Hub
 - build Docker image tagged with GitHub release tag
 - push Docker image to Docker Hub
-- deploy Akka Serverless service.
+- deploy Kalix service.
 
 Fully parmaterized with:
 
 - GitHub release tag
 - Docker Hub username
 - Docker Hub token
-- Akka Serverless token
-- Akka Serverless project ID
+- Kalix token
+- Kalix project ID
 
-For more information: https://developer.lightbend.com/docs/akka-serverless/projects/integrate-cicd-github-actions.html
+For more information: https://developer.lightbend.com/docs/kalix/projects/integrate-cicd-github-actions.html
