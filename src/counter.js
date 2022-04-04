@@ -1,4 +1,4 @@
-import kalix from "@lightbend/kalix-javascript-sdk";
+import kalix from "@kalix-io/kalix-javascript-sdk";
 const ValueEntity = kalix.ValueEntity;
 
 /**
