@@ -150,7 +150,7 @@ export class MockCommandContext {
 /**
  * Mocks the behaviour of the command context object within Kalix.
  *
- * By default, calls to [AkkaServerlessTestKitEntity~handleCommand] will
+ * By default, calls to [KalixTestKitEntity~handleCommand] will
  * construct their own instance of this class, however for making assertions on
  * forwarding or emmitted effects you may provide your own.
  *
@@ -167,7 +167,7 @@ export class MockEventSourcedCommandContext extends MockCommandContext {
 /**
  * Mocks the behaviour of the command context object within Kalix.
  *
- * By default, calls to [AkkaServerlessTestKitEntity~handleCommand] will
+ * By default, calls to [KalixTestKitEntity~handleCommand] will
  * construct their own instance of this class, however for making assertions on
  * forwarding or emmitted effects you may provide your own.
  *
