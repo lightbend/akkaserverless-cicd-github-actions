@@ -48,7 +48,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}
       - name: Kalix Deploy
-        uses: lightbend/kalix-action@v2
+        uses: lightbend/kalix-action@v3
         with:
           cmd: "services deploy person ${{ secrets.DOCKERHUB_USERNAME }}/person:${{ env.PERSON_VERSION }}"
         env:
